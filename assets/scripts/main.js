@@ -108,6 +108,76 @@ $(document).ready(function () {
             }
         ]
     });
+//slider for Language course photo
+     $('#course-gallery').slick({
+        adaptiveHeight: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        fade: true,
+        asNavFor: '#course-nav',
+        appendArrows: $('.arrows-slider'),
+        nextArrow: '<button class="next" type="button"><i class="fas fa-chevron-right"></i></button>',
+        prevArrow: '<button class="prev" type="button"><i class="fas fa-chevron-left"></i></button>'
+        
+
+    });
+
+     $('#course-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        asNavFor: '#course-gallery',
+        centerMode: false,
+        focusOnSelect: true,
+        arrows:false,
+        infinite: true,
+        dots:false,
+                responsive: [
+            {
+                breakpoint: (SCREEN.desktop + 1),
+                settings: {
+          
+                }
+            },
+            {
+                breakpoint: (SCREEN.tablet + 1),
+                settings: {
+                    slidesToShow: 5
+                }
+            },
+            {
+                breakpoint: (SCREEN.mobile_hd + 1),
+                settings: {
+                    slidesToShow: 5
+                   
+                }
+            },
+            {
+                breakpoint: (SCREEN.mobile + 1),
+                settings: {
+                    slidesToShow: 4
+                 
+                }
+            }
+        ]
+
+    });
+       $('.arrows-view').on('click', function () {
+        lightbox.option({
+            'positionFromTop': 200
+        })
+    });
+
+    $("#trigger").click(function(e) {
+        e.preventDefault();
+        $("#box").toggleClass("active");     
+    });
+
+      $("#trigger2").click(function(e) {
+        e.preventDefault();
+        $("#box2").toggleClass("active");     
+    });
+ 
+//end slider for Language course photo
 
     $('#slider-aside').slick({
         adaptiveHeight: true,
@@ -162,20 +232,87 @@ $(document).ready(function () {
     });
 
 
-    // tinymce
-    tinymce.init({
-        selector: '.js-tinymce',
-        height: 80,
-        verify_html: false,
-        menubar: false,
-        statusbar: false,
-        font_formats:'HelveticaNeueCyr',
-        plugins: [
-            'advlist autolink lists link  anchor ',
+    /*
+        Поместил инициализацию плагинов в условие для того что бы не показывало ошибки на страницах где плагин не требуется
+        там где объявлен клас таймпикера или tinymce добавляем свой класс для инициализации плагина
+     */
+    if($('.js-tinymce,.js-tinymce-reviews').length > 0 ){
+        // tinymce
+        tinymce.init({
+            selector: '.js-tinymce , .js-tinymce-reviews',
+            height: 80,
+            verify_html: false,
+            menubar: false,
+            statusbar: false,
+            font_formats:'HelveticaNeueCyr',
+            plugins: [
+                ' textcolor fullpage autolink lists link  anchor  ',
             ],
-        toolbar: 'bold | bullist numlist | italic | link',
+            fullpage_default_text_color: '#787878',
+           toolbar: 'bold | bullist | numlist | italic | link',           
+        });
+    };
+    if($('.js-tinymce-discus').length > 0 ){
+        // tinymce
+        tinymce.init({
+            selector: '.js-tinymce-discus',
+            height: 80,
+            verify_html: false,
+            menubar: false,
+            statusbar: false,
+            font_formats:'HelveticaNeueCyr',
+            plugins: [
+                ' image autolink lists link  anchor ',
+            ],
+            toolbar: 'bold | image | code | bullist | numlist | italic | link',
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            file_picker_callback: function(cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function() {
+                  var file = this.files[0];
+                  var reader = new FileReader();
+                  reader.onload = function () {
+                      var id = 'blobid' + (new Date()).getTime();
+                      var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                      var base64 = reader.result.split(',')[1];
+                      var blobInfo = blobCache.create(id, file, base64);
+                      blobCache.add(blobInfo);
+                      cb(blobInfo.blobUri(), { title: file.name });
+            };
+                reader.readAsDataURL(file);
+            };
+    
+            input.click();
+            }
 
-    });
+        });
+
+    };
+      if($('.js-tinymce-posts').length > 0 ){
+        // tinymce
+        tinymce.init({
+            selector: '.js-tinymce-posts',
+            height: 200,
+            verify_html: false,
+            menubar: false,
+            statusbar: false,
+            font_formats:'HelveticaNeueCyr',
+            plugins: [
+                ' autolink lists link  anchor ',
+            ],
+            toolbar: 'bold | bullist numlist | italic | link',
+
+        });
+
+    };
+    if($('.js-time-picker').length > 0){
+        // Time picker (Setting event page)
+        $('.js-time-picker').timepicker({ 'timeFormat': 'h:i A' });
+    };
 
     $('.js-selected_icon').each(function () {
         $(this).on('click',function () {
@@ -183,23 +320,89 @@ $(document).ready(function () {
             $('.js_choice-icon').html('<i class="'  + getIconStyle + '"></i>' + ' Choice icon');
             $('.select_icon_popup').slideUp();
         })
-    })
+    });
 
-
-    $('.js-validateBtn').on('click',function () {
+    $('.js-validateBtn').on('click',function (e) {
        var chekOnEmpty = tinyMCE.activeEditor.getContent();
+
+       
        if(chekOnEmpty.length == 0){
-           $('.forum_editable_field label #mce_0_ifr').css('borderColor','red')
-       }})
+            e.preventDefault();
+           $(this).parent().find('.error').remove();
+           $('.forum_editable_field label #mce_0_ifr').css('borderColor','red');
+           $('.forum_discus iframe ').css('borderColor','red');           
+           $(this).before('<div class="error">Required field</div>');
+       } else{
+            var iframeArr = [].slice.call( document.querySelectorAll('iframe') );
+            iframeArr.forEach( function(iframe){
+                var childrenArr = [].slice.call( document.querySelector('iframe').contentDocument.querySelector('body').children );
+                childrenArr.forEach( function(obj){
+                    obj.remove();
+                } );
+            } );
 
+            $('.forum_editable_field label #mce_0_ifr').css('borderColor','');
+            $('.forum_discus iframe').css('borderColor','');
+            $(this).parent().find('.error').remove(); 
+       } 
 
-// Time picker (Setting event page)
-    $('.js-time-picker').timepicker({ 'timeFormat': 'h:i A' });
+   });
+
 
 // Radio btns (Setting event page)
     $('.radio-group .btn').on('click', function () {
         $(this).closest('.radio-group').find('.btn').removeClass('active');
         $(this).addClass('active')
 
-    })
+    });
+    /*
+    Выпадающие окна для блока отзывов
+    */
+
+    $('.js-user-list').click(function () {
+        $(this).children('ul').slideToggle();
+        $('.js-complain_by-user').children('ul').slideUp(0)
+    });
+    $('.js-complain_by-user').click(function () {
+        $(this).children('ul').slideToggle();
+        $('.js-user-list').children('ul').slideUp(0)
+    });
+    $('.js-delete-user-post').click(function () {
+        $(this).parent().parent().parent().hide().css('display','none');
+    });
+
+    /* Передаём текст комментария в текстовое поле что бы прокомментировать чей то отзыв */
+    $('.js-comment-current-post').on('click',function () {
+        var getReviewContent = $(this).parent().parent().next().children('p').text() + '<br/>' + '-----------------';
+        var chekOnEmpty = tinyMCE.activeEditor.getContent();
+        if(chekOnEmpty.length == 0){
+            tinyMCE.activeEditor.execCommand('mceInsertContent', false, getReviewContent + '<br/>')
+        }else{
+            chekOnEmpty.appendTo(tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<br/>' + getReviewContent + '<br/>'))
+        }
+    });
+    $('.js-review_btn-send').click(function () {
+        var chekOnEmpty = tinyMCE.activeEditor.getContent();
+
+        if(chekOnEmpty.length == 0){
+
+            $('.forum_editable_field label #mce_0_ifr').css('borderColor','red')
+        }
+    });
+
+        function validate(evt) {
+          var theEvent = evt || window.event;
+          var key = theEvent.keyCode || theEvent.which;
+          key = String.fromCharCode( key );
+          var regex = /[0-9]|\./;
+          if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+          }
+        }
+
 });
+
+
+
+
