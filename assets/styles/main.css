@@ -1815,7 +1815,20 @@ b {
     padding-top: 20px;
     padding-bottom: 32px;
 }
+.form-search_wrapper {
+   -ms-flex-pack: justify;
+   -webkit-box-pack: justify;
+   justify-content: space-between;
+}
+.form-search_wrapper > .btn {
+   height: 50px;
+   min-width: auto;
+   width: 120px;
+}  
 .form-search__wrap {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
   -ms-flex-pack: justify;
   -webkit-box-pack: justify;
   justify-content: space-between;
@@ -1863,6 +1876,7 @@ b {
   min-width: auto;
   width: 120px;
 }
+
 
 .forum .table-content,
 .forum .table-content_thead th,
