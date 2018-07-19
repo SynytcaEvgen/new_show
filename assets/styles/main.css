@@ -2170,7 +2170,7 @@ b {
 
 .forum2 .form-search__wrap .btn.form-search__button {
   min-width: 120px;
-  height: 40px;
+  min-height: 40px;
 }
 
 .forum2 .btn_primary {
@@ -2840,8 +2840,17 @@ b {
   color: #787878;
 }
 
+.in_put_data {
+    width: 100px;
+}
+.tabel-row {
+     flex-direction: row!important;
+    
+} 
+.in_put_group {
+    width: 100px;
+} 
 .events .table-content input {
-  width: 100%;
   height: 30px;
   border-radius: 5px;
   border: 1px solid #bababa;
@@ -4271,10 +4280,6 @@ form.similar_form div.forum_editable_field .tiny_mce_wrap > label > span {
   border: none;
 }
 
-.forum_editable_field label .mce-top-part {
-  padding-left: 45px;
-}
-
 .forum_editable_field label {
   position: relative;
 }
@@ -4302,6 +4307,10 @@ form.similar_form div.forum_editable_field .tiny_mce_wrap > label > span {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+.forum_editable_field label .mce-top-part {
+   
+    padding: 0 0 13px 45px;
 }
 
 .tiny_mce_label {
@@ -4918,14 +4927,6 @@ form.similar_form div.forum_editable_field .tiny_mce_wrap > label > span {
   margin-bottom: 40px;
 }
 
-.main_course_content .similar_form ul li {
-  margin-bottom: 15px;
-}
-
-.main_course_content .similar_form ul li:last-child {
-  margin-bottom: 10px;
-}
-
 .course_class-format,
 .course_module-format {
   margin-right: 145px;
@@ -4998,11 +4999,13 @@ form.similar_form div.forum_editable_field .tiny_mce_wrap > label > span {
   -webkit-transition: background-color ease .5s;
   transition: background-color ease .5s;
   border-radius: 5px;
-  margin-right: 10px;
   border: none;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+.review_warning-wrap > a {
+    margin-right: 10px;
 }
 
 .course_warning_btn:hover,
@@ -5565,6 +5568,10 @@ form.similar_form div.forum_editable_field .tiny_mce_wrap > label > span {
 }
 
 .layout_titel_3 {
+    font-size: 18px;
+    text-transform: uppercase;   
+}
+.layout_titel_2 {
     font-size: 18px;
     text-transform: uppercase;   
 }
