@@ -3733,7 +3733,8 @@ form.personal_content_field {
   left: 0;
   /*cursor: pointer;*/
   display: none;
-  overflow-y: auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; /*smooth scroll in iOS*/
 }
 
 .modal_open {
