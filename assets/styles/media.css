@@ -27,6 +27,13 @@
         width: auto;
     }
 }
+@media only screen and (max-width: 1200px) and (min-width: 991px){
+    .auth-controls  {      
+        position: relative;
+        top: -215px;
+        right: -550px;             
+        }
+}        
 /*Start---Special for events tabel---Start*/
 
 @media only screen and (max-width: 1330px){
@@ -173,8 +180,6 @@
     .select_icon_popup {
         left: 50px;
     }
-}
-
     /*Partners Page End*/
 }
 @media only screen and (max-width : 1200px){
@@ -218,6 +223,7 @@
         padding-top: 60px;
     }
     /*Personal Setting page end*/
+    
 
     /* Event Settings page */
     .es__group > div > div:nth-child(2) {
@@ -236,7 +242,7 @@
      } 
      .select_icon_popup {
         left: 0;
-    }
+    }    
 }
 @media (max-width: 1024px){
     /*Personal Setting page*/
@@ -467,7 +473,7 @@
    .personal_content_lp label,
    .personal_content_rp label {
        width: 320px;
-
+    }
 }
 @media only screen and (max-width : 768px){
     /* Language course main*/
@@ -1033,7 +1039,7 @@
     .pad_0 {
         padding-left: 0;
     }
-    .breadcrumbs__item:last-child {
+    .breadcrumbs__item:nth-child(3) {
        margin-right: 150px;
     }  
     .layout_titel_2 {
@@ -1243,6 +1249,10 @@
     .discus__content {
         margin: 0 30px;
     }
+    .review_warning_massage {
+        margin-top: 15px;
+    }
+     
 }
 @media only screen and (max-width : 340px){
     .profile_photo_info{
@@ -1281,8 +1291,8 @@
         width: 290px;
         padding: 20px 15px;
         left: 0;
-    }
-   }
+    }    
+}
 
 
 /* Language course photo */
@@ -1392,6 +1402,7 @@
         margin-right: 70px;
         max-width: 580px;
    }
+}   
 @media only screen and (max-width : 575px){
  
  
@@ -1431,8 +1442,7 @@
  
 }
  
-@media only screen and (max-width : 768px){
-     
+@media only screen and (max-width : 768px){    
     
  
  

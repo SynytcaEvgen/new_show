@@ -230,6 +230,9 @@ $(document).ready(function () {
     $('.close_popup_button').click(function () {
         $('.select_icon_popup').slideUp();
     });
+    $('.close_popup_button').click(function () {
+        $('.menagement__popup').hide();
+    });
 
 
     /*
@@ -249,7 +252,7 @@ $(document).ready(function () {
                 ' textcolor fullpage autolink lists link  anchor  ',
             ],
             fullpage_default_text_color: '#787878',
-           toolbar: 'bold | bullist | numlist | italic | link',           
+            toolbar: 'bold | bullist | numlist | italic | link',
         });
     };
     if($('.js-tinymce-discus').length > 0 ){
@@ -262,8 +265,9 @@ $(document).ready(function () {
             statusbar: false,
             font_formats:'HelveticaNeueCyr',
             plugins: [
-                ' image autolink lists link  anchor ',
+                ' textcolor fullpage image autolink lists link  anchor ',
             ],
+            fullpage_default_text_color: '#787878',
             toolbar: 'bold | image | code | bullist | numlist | italic | link',
             image_title: true,
             automatic_uploads: true,
@@ -302,8 +306,9 @@ $(document).ready(function () {
             statusbar: false,
             font_formats:'HelveticaNeueCyr',
             plugins: [
-                ' autolink lists link  anchor ',
+                ' textcolor fullpage autolink lists link  anchor ',
             ],
+            fullpage_default_text_color: '#787878',
             toolbar: 'bold | bullist numlist | italic | link',
 
         });
@@ -320,33 +325,7 @@ $(document).ready(function () {
             $('.js_choice-icon').html('<i class="'  + getIconStyle + '"></i>' + ' Choice icon');
             $('.select_icon_popup').slideUp();
         })
-    });
-
-    $('.js-validateBtn').on('click',function (e) {
-       var chekOnEmpty = tinyMCE.activeEditor.getContent();
-
-       
-       if(chekOnEmpty.length == 0){
-            e.preventDefault();
-           $(this).parent().find('.error').remove();
-           $('.forum_editable_field label #mce_0_ifr').css('borderColor','red');
-           $('.forum_discus iframe ').css('borderColor','red');           
-           $(this).before('<div class="error">Required field</div>');
-       } else{
-            var iframeArr = [].slice.call( document.querySelectorAll('iframe') );
-            iframeArr.forEach( function(iframe){
-                var childrenArr = [].slice.call( document.querySelector('iframe').contentDocument.querySelector('body').children );
-                childrenArr.forEach( function(obj){
-                    obj.remove();
-                } );
-            } );
-
-            $('.forum_editable_field label #mce_0_ifr').css('borderColor','');
-            $('.forum_discus iframe').css('borderColor','');
-            $(this).parent().find('.error').remove(); 
-       } 
-
-   });
+    }); 
 
 
 // Radio btns (Setting event page)
@@ -381,14 +360,14 @@ $(document).ready(function () {
             chekOnEmpty.appendTo(tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<br/>' + getReviewContent + '<br/>'))
         }
     });
-    $('.js-review_btn-send').click(function () {
-        var chekOnEmpty = tinyMCE.activeEditor.getContent();
+    // $('.js-review_btn-send').click(function () {
+    //     var chekOnEmpty = tinyMCE.activeEditor.getContent();
 
-        if(chekOnEmpty.length == 0){
+    //     if(chekOnEmpty.length == 0){
 
-            $('.forum_editable_field label #mce_0_ifr').css('borderColor','red')
-        }
-    });
+    //         $('.forum_editable_field label #mce_0_ifr').css('borderColor','red')
+    //     }
+    // });
 
         function validate(evt) {
           var theEvent = evt || window.event;
