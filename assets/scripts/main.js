@@ -169,7 +169,7 @@ $(document).ready(function () {
 
     $("#trigger").click(function(e) {
         e.preventDefault();
-        $("#box").toggleClass("active");     
+        $("#box").toggleClass("active");        
     });
 
       $("#trigger2").click(function(e) {
@@ -203,11 +203,19 @@ $(document).ready(function () {
     }})();
 
     // Datapicker
+    
     $('#js-date-picker, .js-date-picker,.js-date-picker-reg').datepicker({
-        changeYear: true,
-        yearRange: "1950:2018",
-        dateFormat: "dd/mm/yy"
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1900:2018",
+            dateFormat: "dd/mm/yy",
+            closeText: "Close"   
     });
+
+
+    $("#datepicker-btn").click(function() {
+        $("#datepicker-input").datepicker("show");
+    });   
 
 
     $('.js-clear_date_field').click(function () {
@@ -232,9 +240,7 @@ $(document).ready(function () {
     });
     $('.close_popup_button').click(function () {
         $('.menagement__popup').hide();
-    });
-
-
+    });  
     /*
         Поместил инициализацию плагинов в условие для того что бы не показывало ошибки на страницах где плагин не требуется
         там где объявлен клас таймпикера или tinymce добавляем свой класс для инициализации плагина

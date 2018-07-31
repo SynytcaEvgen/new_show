@@ -27,13 +27,6 @@
         width: auto;
     }
 }
-@media only screen and (max-width: 1200px) and (min-width: 991px){
-    .auth-controls  {      
-        position: relative;
-        top: -215px;
-        right: -550px;             
-        }
-}        
 /*Start---Special for events tabel---Start*/
 
 @media only screen and (max-width: 1330px){
@@ -52,11 +45,6 @@
 @media only screen and (max-width:1250px){
     .in_put_group input {
         width: 140px;
-    }
-}
-@media only screen and (max-width:1199px){
-    .in_put_group input {
-        width: 80px;
     }
 }
 @media only screen and (max-width:1130px){
@@ -93,14 +81,15 @@
         width: 120px;
     }
 }
- @media only screen and (max-width:991px){
+@media only screen and (max-width:991px){
     .in_put_data {
         width: 92px;
     }
     .in_put_group input {
         width: 110px;
     }
- @media only screen and (max-width:768px){
+}
+@media only screen and (max-width:768px){
     .in_put_data {
         width: 100%;
     }
@@ -111,18 +100,33 @@
 @media only screen and (max-width:420px){
     .in_put_data {
         width: 120px;
-    }     
+    }  
+
 }
 @media only screen and (max-width:380px){
     .in_put_data {
         width: 110px;
+    }
+    .social_log-in {
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+    .social_log-in span.pluso-wrap a:first-child {
+        margin-left: 0px;        
+    }
+    .social_log-in span.pluso-wrap a {
+        margin-top: 10px;
     }   
+    
 }
 @media only screen and (max-width:350px){
     .in_put_data {
         width: 100px;
-    }   
+    } 
+    
 }
+
 
 /*End ---Special for events tabel---End*/
 
@@ -146,10 +150,7 @@
     }
     .widgets {
         margin-top: 15px;
-        -ms-flex-order: 2;
-        order: 2;
-    }
-
+    } 
     /* Aside right to blocks start */
     .fixed-aside__item {
         margin-bottom: 40px;
@@ -182,6 +183,7 @@
     }
     /*Partners Page End*/
 }
+
 @media only screen and (max-width : 1200px){
     /*Forum page*/
     .layout__title{
@@ -195,15 +197,35 @@
     
     /* Language course registration End */
 }
-@media only screen and (max-width : 1199px){
+
+
+@media (max-width: 1024px){
+    /*Personal Setting page*/
+   
+    /*Personal Setting page End*/
+    /* Aside right to blocks start */
+    .fixed-aside{
+        right: -18px;
+    }
+    .slideout__btn{
+        line-height: 40px;
+        min-width: 40px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+
+    .widgets {
+        margin-top: 15px;
+        -ms-flex-order: 2;
+        order: 1;
+    }
 
     /*Personal Setting page*/
     .personal_setting_wrap{
         flex-wrap: wrap;
     }
-    .personal_form_in{
-        justify-content: space-around;
-    }
+    
     .personal_groups_in{
         flex-direction: row;
         flex-wrap: wrap;
@@ -222,6 +244,18 @@
     .personal_groups{
         padding-top: 60px;
     }
+    /*.personal_content_lp  label, 
+    .personal_content_rp  label {
+        width: 320px;
+       
+    }*/
+    .personal_form_in{
+        justify-content: space-around;
+    }
+    .in_put_group input {
+        width: 80px;
+    }
+
     /*Personal Setting page end*/
     
 
@@ -233,37 +267,29 @@
     .search_filter_pos{    
        display: flex;
        flex-wrap: wrap;
-     }
-     .events__tag{
+    }
+    .events__tag{
         margin: 0 80px 0 0;
-     }
-      .events__aside{ 
+    }
+    .events__aside{ 
         width: 50%; 
-     } 
-     .select_icon_popup {
+    } 
+    .select_icon_popup {
         left: 0;
-    }    
+    } 
+    /*Group Start*/
+    .groups-wrap .news-group__item {
+        min-width: 400px;
+    }   
+
+    /*Group End*/    
 }
-@media (max-width: 1024px){
-    /*Personal Setting page*/
-    /*.personal_form_in{
-        justify-content: space-between;
-    }*/
-    /*Personal Setting page End*/
-    /* Aside right to blocks start */
-    .fixed-aside{
-        right: -18px;
-    }
-    .slideout__btn{
-        line-height: 40px;
-        min-width: 40px;
-    }
-}
-@media only screen and (max-width : 991px){
-    /* Language course registration */
+
+
+@media only screen and (max-width: 991px) {
     .reg_course_top-part{
         width: auto;
-    }
+    }  
     .main_course_content .similar_form .reg_course_top-part .reg_course_field-wrap label{
         width: 350px;
     }
@@ -296,6 +322,9 @@
         align-self: flex-start;
     }
     /* Language course registration End */
+   
+    /*Personal Setting page end*/
+
     /* Language course main*/
     .course_description{
         margin-right: 0;
@@ -339,11 +368,7 @@
         width: 800px;
     }
     /*Partners Page End*/
-    /*Personal Setting page*/
-    .remove_default_styles{
-        max-width: 100%
-    }
-    /*Personal Setting page end*/
+    
     /* Banner */
     .banner {
         padding: 40px 50px;
@@ -370,20 +395,28 @@
      .groups-list{ 
         display: none !important; 
     } 
-    /* Event page end*/
-     /*Wish wall page*/
-    .wish_wall_form{
+    /*Group Start*/
+    .groups-wrap .news-group__item {
+        min-width: 0;  
+        width: 0;  
+    }   
+    .groups-wrap {
+        max-width: 520px;
+        flex-direction: row ;
+        justify-content: space-between;
+    }
+
+    /*Group End*/  
+          
+
+}    
+@media only screen and (max-width: 991px) {
+    
+    .wish_wall_form {
         align-self: center;
         max-width: 100%;
     }
-    /*Wish wall page end*/
-
-    /* Events page */
-    .events .table-content .date-box {
-        position: relative;
-    }
-
-    .events .table-content .date-box>span {
+    .events .table-content .date-box > span {
         position: absolute;
         right: 3px;
         top: 12px;
@@ -391,6 +424,9 @@
         padding: 13px 0;
         width: 30px;
     }
+    .events .table-content .date-box {
+        position: relative;
+    }   
 
     /* Event Settings page */
     .es_photo_box {
@@ -440,7 +476,28 @@
     .block_discus{
         margin-top: 10px;
     }
+    /*Group Start*/
+    .groups_search_filter{
+        flex-wrap: wrap;
+    }
+    .groups-search {
+        max-width: 520px;
+    }
+    .groups_title_search{
+        width: 100%;
+    }
+    .groups_wrap_button {
+        margin-left: 0px;
+        width: 100%;
+    }
+    
+    /*Group End*/
+    #box input{       
+       width: 436px;
+    }
+    
 }
+
    
 
 @media only screen and (max-width : 850px){
@@ -450,12 +507,8 @@
     }
     /* Language course registration End*/
     /*Personal Setting page */
-    .personal_content_lp {
-        padding-left: 30px;
-    }
-    .personal_content_rp {       
-       padding-right: 30px;
-    }   
+    
+
     /*Personal Setting page End*/
     /*Partners Page*/
 
@@ -465,15 +518,15 @@
     }
     /*Partners Page End*/
 }    
- @media only screen and (max-width : 815px){   
+@media only screen and (max-width : 815px){   
     .select_icon_popup {
         width: 700px;
         left: 0;
     }
-   .personal_content_lp label,
+   /*.personal_content_lp label,
    .personal_content_rp label {
-       width: 320px;
-    }
+       width: 330px;
+    }*/
 }
 @media only screen and (max-width : 768px){
     /* Language course main*/
@@ -492,7 +545,7 @@
     }
     .layout__title{
         font-size: 18px;
-        padding-bottom: 10px;
+        padding-bottom: 0px;
     }
     .forum .table-content_thead th:nth-child(2){
         width: 18%;
@@ -514,12 +567,6 @@
     /*tart Discussion_group*/
     .message_merg {
     margin-left: 0px;
-    }
-    .pos_reply {
-        flex-direction: column!important;
-    }
-    .reply_pos {
-    margin-top: 17px;
     }
     .add_cont_1:after {
         content: " 1";
@@ -600,9 +647,9 @@
     }
     /* Wish wall page*/
     /*Personal Setting page */
-    .personal_content_lp label, .personal_content_rp label{
+    /*.personal_content_lp label, .personal_content_rp label{
         width: 285px;
-    }
+    }*/
     /*Personal Setting page End*/
     /* Banner */
     .banner {
@@ -616,7 +663,7 @@
     /* M-control */
     .m-control {
         position: fixed;
-        z-index: 100000;
+        z-index: 999;
         top: 18px;
         right: 18px;
         display: block;
@@ -764,17 +811,19 @@
     .event__banner {
         padding: 30px 7px 35px;
         border-radius: 0;
+        align-items: inherit;
+        
+    }
+    .event__banner > div {
+        padding: 0;
+        margin: 0;
+
+    }
+    .event__banner > .event__button  {
+        justify-content: flex-end;
     }
 
-    .event__banner p {
-        width: 100%;
-    }
-
-    .event__banner>h3, .event__banner>div {
-        max-width: 540px;
-        padding: 0 15px;
-        margin: 0 auto;
-    }
+    
 
     /* Event page end*/
 
@@ -807,7 +856,7 @@
     }
     .sub_pos_wrap input {
     
-    width: 100% !important
+    width: 100% !important;
     }
     .btn_sub {
     margin-left: 0px !important;
@@ -816,7 +865,17 @@
 
     }
     /*Language courses end*/
-}
+    .pos_reply {
+        flex-direction: column!important;
+    }
+    .reply_pos {
+    margin-top: 17px;
+    }
+    #box input{       
+       width: 282px;
+    }
+}    
+    
 @media only screen and (max-width : 635px){
     /* Language course registration */
     .reg_course_bottom-part{
@@ -899,7 +958,7 @@
     /*Partners Page End*/
     /*Personal Setting page */
     .personal_content_lp label, .personal_content_rp label{
-        width: 250px;
+        /*max-width: 300px;*/
     }
     /*Personal Setting page End*/
     /*Forum page*/
@@ -948,7 +1007,7 @@
     }
     .file_load_icons{
         top: 30px;
-        left: 0
+        left: 0;
     }
     .forum_editable_field label .mce-top-part{
         padding-left: 45px;
@@ -975,7 +1034,7 @@
     /*Create forum End*/
     /*Wish wall page */
     .wish_wall_form{
-        padding: 45px
+        padding: 45px;
     }
     /*Wish wall page end*/
     /*Personal Setting page */
@@ -984,8 +1043,14 @@
     }
     .personal_form_in{
         flex-direction: column;
-        width: 80%;
+        width: 100%;
         align-self: center;
+    }
+    .personal_content_lp {
+        margin-right: 0px;
+    }
+    .personal_content_rp {
+        margin-left: 0px;
     }
     /*Personal Setting page End*/
     /* Banner */
@@ -1020,7 +1085,8 @@
 
     /* Pages */
     /* Input form-search main */
-    .form-search__wrap {
+
+    .form-search_wrapper {
         flex-wrap: wrap;
         justify-content: center;
     }
@@ -1072,6 +1138,18 @@
         max-width: 490px;
         height: 300px;
         top:-200px;
+    }
+
+    #box input{
+        position: relative;
+        right: 0px;
+        bottom: 10px;
+        height: 35px;
+        width: 178px;    
+    }
+    #box .search_btn {        
+        bottom: 17px;
+        right: 12px;        
     }
 }
 @media only screen and (max-width : 480px){
@@ -1183,7 +1261,7 @@
     /*Create forum End*/
     /*Partners Page*/
     .modal__wrap{
-        padding: 35px 7px 35px 7px;
+        padding: 50px 7px 35px 7px;
     }
     .modal_left_side, .modal_right_side{
         width: 290px;
@@ -1198,9 +1276,7 @@
     }
 
     /*Wish wall page end*/
-    .container{
-        padding: 0 7px
-    }
+    
     .row{
         margin-right: 0;
         margin-left: 0;
@@ -1251,6 +1327,16 @@
     }
     .review_warning_massage {
         margin-top: 15px;
+    }
+    .groups_wrap_button {
+        flex-wrap: wrap;
+    }
+    .groups_form_search_section input:nth-child(1){
+        margin-left: 0;
+    }
+    .groups_form_search_section{
+        width: 100%;    
+        justify-content: center;
     }
      
 }
